@@ -10,7 +10,7 @@ import java.io.IOException;
 class CipherAppSwing {
     public static void main(String[] args) {
         // Membuat JFrame
-        JFrame frame = new JFrame("Cipher Encryptor/Decryptor");
+        JFrame frame = new JFrame("Generator Crypto");
         frame.setSize(500, 500); // Ukuran yang lebih besar
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -24,7 +24,7 @@ class CipherAppSwing {
 
         // Panel untuk form input
         JPanel formPanel = new JPanel(new GridBagLayout());
-        formPanel.setBackground(new Color(255, 255, 255)); // Background putih
+        formPanel.setBackground(new Color(215, 215, 255)); // Background putih
         formPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Padding
 
         // Menambahkan komponen ke panel
@@ -43,7 +43,7 @@ class CipherAppSwing {
         constraints.insets = new Insets(10, 10, 10, 10); // Padding
 
         // Judul
-        JLabel titleLabel = new JLabel("Cipher Encryptor/Decryptor", JLabel.CENTER);
+        JLabel titleLabel = new JLabel("Generator Crypto", JLabel.CENTER);
         titleLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
         titleLabel.setForeground(new Color(0, 122, 204)); // Warna biru modern
         constraints.gridx = 0;
@@ -67,7 +67,7 @@ class CipherAppSwing {
         panel.add(messageText, constraints);
 
         // Tombol untuk mengunggah file .txt dengan ikon
-        JButton uploadButton = new JButton("Upload .txt File", new ImageIcon("icons/upload.png"));
+        JButton uploadButton = new JButton("Upload .txt");
         uploadButton.setBackground(new Color(0, 122, 204));
         uploadButton.setForeground(Color.WHITE);
         uploadButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -90,32 +90,27 @@ class CipherAppSwing {
         panel.add(keyText, constraints);
 
         // ComboBox untuk memilih cipher
-        JLabel cipherLabel = new JLabel("Select Cipher:");
-        cipherLabel.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        constraints.gridx = 0;
-        constraints.gridy = 3;
-        panel.add(cipherLabel, constraints);
 
         String[] ciphers = {"Vigenere", "Playfair", "Hill"};
         JComboBox<String> cipherComboBox = new JComboBox<>(ciphers);
         cipherComboBox.setFont(new Font("SansSerif", Font.PLAIN, 14));
-        constraints.gridx = 1;
-        constraints.gridy = 3;
+        constraints.gridx = 2;
+        constraints.gridy = 2;
         panel.add(cipherComboBox, constraints);
 
         // Tombol untuk enkripsi dengan ikon
-        JButton encryptButton = new JButton("Encrypt", new ImageIcon("icons/encrypt.png"));
-        encryptButton.setBackground(new Color(0, 153, 51));
-        encryptButton.setForeground(Color.WHITE);
+        JButton encryptButton = new JButton("Encrypt");
+        encryptButton.setBackground(new Color(206, 246, 16));
+        encryptButton.setForeground(Color.BLACK);
         encryptButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
         constraints.gridx = 0;
         constraints.gridy = 4;
         panel.add(encryptButton, constraints);
 
         // Tombol untuk dekripsi dengan ikon
-        JButton decryptButton = new JButton("Decrypt", new ImageIcon("icons/decrypt.png"));
-        decryptButton.setBackground(new Color(204, 51, 0));
-        decryptButton.setForeground(Color.WHITE);
+        JButton decryptButton = new JButton("Decrypt");
+        decryptButton.setBackground(new Color(246, 16, 16));
+        decryptButton.setForeground(Color.BLACK);
         decryptButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
         constraints.gridx = 1;
         constraints.gridy = 4;
@@ -183,7 +178,7 @@ class CipherAppSwing {
                     }
                     resultArea.setText(encryptedMessage);
                 } else {
-                    resultArea.setText("Key must be at least 12 characters");
+                    JOptionPane.showMessageDialog(panel, "Key must be at least 12 characters", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -210,7 +205,7 @@ class CipherAppSwing {
                     }
                     resultArea.setText(decryptedMessage);
                 } else {
-                    resultArea.setText("Key must be at least 12 characters");
+                    JOptionPane.showMessageDialog(panel, "Key must be at least 12 characters", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
