@@ -162,21 +162,21 @@ public class CipherUtils {
     }
 
     public static String hillDecrypt(String message, String key) {
-        int[][] matrix = createMatrix(key);
-        int[][] inverseMatrix = inverseMatrix(matrix, 4);
-        StringBuilder decrypted = new StringBuilder();
+    int[][] matrix = createMatrix(key);
+    int[][] inverseMatrix = inverseMatrix(matrix, 4);
+    StringBuilder decrypted = new StringBuilder();
 
-        for (int i = 0; i < message.length(); i += 4) {
-            int[] vector = new int[4];
-            for (int j = 0; j < 4; j++) {
-                vector[j] = message.charAt(i + j) - 'A';
-            }
-            int[] result = multiplyMatrixByVector(inverseMatrix, vector);
-            for (int value : result) {
-                decrypted.append((char) ((value % 26 + 26) % 26 + 'A'));
-            }
+    for (int i = 0; i < message.length(); i += 4) {
+        int[] vector = new int[4];
+        for (int j = 0; j < 4; j++) {
+            vector[j] = message.charAt(i + j) - 'A';
         }
-        return decrypted.toString();
+        int[] result = multiplyMatrixByVector(inverseMatrix, vector);
+        for (int value : result) {
+            decrypted.append((char) ((value % 26 + 26) % 26 + 'A'));
+        }
+    }
+    return decrypted.toString().replaceAll("X+$", ""); // Menghapus padding 'X' di akhir
     }
 
     private static int[] multiplyMatrixByVector(int[][] matrix, int[] vector) {
