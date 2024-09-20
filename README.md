@@ -1,7 +1,3 @@
-Here is a sample `README.md` file for the repository you shared, written in English:
-
----
-
 # Cryptography Cipher Application
 
 This is a Java-based GUI application that implements three classic cryptographic ciphers: **Vigenere Cipher**, **Playfair Cipher**, and **Hill Cipher**. The application allows you to both encrypt and decrypt messages using any of these ciphers.
@@ -82,5 +78,3 @@ If you'd like to contribute, please fork the repository and submit a pull reques
 3. Commit your changes (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature/new-feature`).
 5. Open a Pull Request.
-
----
