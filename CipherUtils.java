@@ -143,6 +143,7 @@ public class CipherUtils {
         return matrix;
     }
 
+    // HILL CHIPER
     public static String hillEncrypt(String message, String key) {
         int[][] matrix = createMatrix(key);
         String paddedMessage = padMessage(message);
